@@ -1,9 +1,22 @@
-resource local_file res1 {
-				filename = var.f3
-				content = var.f3
-			}
 
-variable f3 {
-					default = "abc.txt"
-					type = string
-				}
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.90.0"
+    }
+  }
+}
+
+provider "azurerm" {
+  features {}
+}
+
+
+# -------------------------
+# Resource Group
+# -------------------------
+resource "azurerm_resource_group" "rg" {
+  name     = "rgbasic-vm1"
+  location = "centralindia"
+}
